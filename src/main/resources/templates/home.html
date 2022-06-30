@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css.css}">
+</head>
+<body>
+
+<body>
+	<tr th:each="web:${web}">
+				
+    <header>
+        <h1>Juegos Competitivos 2022</h1>
+    </header>
+    <p class="presentacion">El mundo del juego siempre es interesante para nosotros porque nos apasiona la competencia.
+        Hoy vamos a buscar a los más competitivos de todos los tiempos. En esta pagina podras encontrar una variedad de
+        juegos competitivos mas jugados en 2022</p>
+    <h2>Lista de Juegos</h2>
+    <nav>
+        <div class="lista">
+            <li class="op1"><a href="#n1">Counter Strike : Global Offensive</a></li>
+            <li class="op1"><a href="#n2">Valorant</a></li>
+            <li class="op1"><a href="#n3">League Of Legends</a></li>
+            <li class="op1"><a href="#n4">Dota 2</a></li>
+            <li class="op1"><a href="#n5">Rocket League</a></li>
+        </div>
+    </nav>
+    <div class="contenedor">
+        <div class="caja box1">
+            <p id="n1">Counter Strike Global Offensive</p><img src="imagenes/csgo.jpeg" alt="imagen de csgo">
+            <p class="text-img">Counter-Strike: Global Offensive de Valve es otro juego en nuestra lista. Este juego
+                fue
+                lanzado en 2012, siguiendo los pasos de una larga línea de juegos FPS multijugador como el
+                Counter-Strike original y el Counter-Strike: Source.
+                <br><br>
+                Seis años después, el vertiginoso juego de PC sigue siendo competitivo principalmente con los juegos más
+                recientes, gracias en parte a su juego central establecido y su comunidad activa. Sin embargo, las
+                imágenes de CS:GO están comenzando a mostrar su edad, y no es tan rico conceptualmente como otros
+                títulos populares como Overwatch. A pesar de esto, muchos jugadores disfrutarán de la experiencia
+                sencilla y la atmósfera competitiva de CS:GO, especialmente porque los juegos son gratuitos.</p>
+        </div>
+        <div class="caja box2">
+        	
+            <p id="n2">Valorant</p><img src="https://th.bing.com/th/id/OIP.FA4T-HE2NGv3ya16GRNpzwHaE7?pid=ImgDet&rs=1" alt="imagen de valorant">
+            <p class="text-img" th:text="${web.nombre}"> teexto teexto teexto teexto teexto teexto teexto teexto teexto teexto teexto teexto </p>
+        </div>
+        <div class="caja box3">
+            <p id="n3">League of Legends</p><img src="imagenes/lol.jpg" alt="imagen de lol">
+            <p class="text-img">League of Legends fue uno de los primeros juegos gratuitos a gran escala, así como uno
+                de los primeros
+                campos de batalla en línea multijugador a gran escala, o MOBA. Sin embargo, cinco años después, League
+                of Legends sigue siendo un brillante ejemplo de grandeza.</p>
+        </div>
+        <div class="caja box4">
+            <p id="n4">Dota 2</p><img src="imagenes/dota 2.jpg" alt="imagen de dota">
+            <p class="text-img">Esta obra maestra es un juego multijugador que consiste principalmente en combates
+                cinco contra cinco para destruir al "Anciano" del otro equipo. Antes de que comience el juego, cada
+                participante debe elegir un héroe de un grupo de más de cien personajes distintos, idealmente
+                desempeñando roles con los que los jugadores de MMO pueden estar familiarizados.</p>
+        </div>
+        <div class="caja box5">
+            <p id="n5">Rocket League</p><img src="imagenes/rocket god.jpeg" alt="imagen de rocket">
+            <p class="text-img">Rocket League es un videojuego que combina el fútbol con los vehículos. Fue
+                desarrollado por Psyonix y lanzado el 7 de julio de 2015. Fue lanzado Free to play en septiembre de
+                2020. Se encuentra disponible en español, y tiene modos de juego cooperativo de un jugador y en línea.
+            </p>
+        </div>
+    </div>
+    <h2>Dejanos un comentario a nuestro correo!</h2>
+    <textarea class="com" name="comentario" id="com" cols="30" rows="10" placeholder="Ingresa un Comentario"></textarea>
+    <input class="boton" type="submit" value="Enviar" onclick="calcular()">
+    <footer>
+        <img class="logo" src="imagenes/logo.jpg.png" alt="">
+        <ul class="menu-footer">
+            <li class="menu-item">Legal</li>
+            <li class="menu-item">Cookies</li>
+            <li class="menu-item">Privacidad</li>
+            <li class="menu-item">Refounds</li>
+        </ul>
+        <span class="copyright">&copy;2022, E-Sports. All rights reserved</span>
+
+    </footer>
+
+    <script src="js/js.js"></script>
+</body>
+
+</body>
+</html>

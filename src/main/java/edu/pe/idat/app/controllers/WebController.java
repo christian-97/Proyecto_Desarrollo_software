@@ -1,19 +1,22 @@
 package edu.pe.idat.app.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import edu.pe.idat.app.models.entities.PaginaWebPrincipalModel;
+import com.app.models.dao.IWeb;
 
 @Controller
 public class WebController {
 	
-	@GetMapping("/index")
-	public String listar(Model model) {
-		PaginaWebPrincipalModel web = new PaginaWebPrincipalModel("alo");
-		model.addAttribute("PaginaPrincipal",web);
-		return "index";
+	@Autowired
+	private IWeb iWeb;
+	
+	@GetMapping("/home")
+	public String mostrar(Model model) {
+		model.addAttribute("web",iWeb.mostrarTodo());
+		return "home";
 	}
 
 }

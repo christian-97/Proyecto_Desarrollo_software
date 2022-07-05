@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminController {
 	
 	@GetMapping("")
-	public String home() {
+	public String home() { //cambié el home() a show()
 		return"administrador/home";
 	}
 

@@ -1,5 +1,6 @@
 package edu.pe.idat.app.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import edu.pe.idat.app.models.entities.Producto;
@@ -24,5 +25,7 @@ public interface ProductoService {
 	//delete recive como parámetro un id 
 	//para buscar y eliminar un producto
 	public void delete(Integer id);
+	
+	public List<Producto> findAll();
 
 }

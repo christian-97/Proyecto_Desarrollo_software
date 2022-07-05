@@ -1,4 +1,4 @@
-package edu.pe.idat.app.models.model;
+package edu.pe.idat.app.models.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

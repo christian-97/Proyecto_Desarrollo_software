@@ -1,4 +1,4 @@
-package edu.pe.idat.app.models.model;
+package edu.pe.idat.app.models.entities;
 
 import java.util.Date;
 import java.util.List;

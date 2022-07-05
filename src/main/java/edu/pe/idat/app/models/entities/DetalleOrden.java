@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+// como primer paso se crean los modelos
 @Entity
 @Table(name = "detalles")
 public class DetalleOrden {

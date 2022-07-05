@@ -8,25 +8,27 @@ import org.springframework.stereotype.Service;
 import edu.pe.idat.app.models.DAO.ProductoDao;
 import edu.pe.idat.app.models.entities.Producto;
 
+//se crea un ProductoServiceImpl que 
+//implemta a ProductoService para poder usar
+//las funciones de ProductoService
 
 @Service
-public class ProductoServiceImpl implements ProductoService{
+public class ProductoServiceImpl implements ProductoService {
 
 	@Autowired
 	private ProductoDao productoRepository;
-	
+
 	@Override
 	public Producto save(Producto producto) {
-		// TODO Auto-generated method stub
+		// save = guardar
 		return productoRepository.save(producto);
 	}
 
 	@Override
 	public Optional<Producto> get(Integer id) {
-		// TODO Auto-generated method stub
+		// findById = buscar por Id
 		return productoRepository.findById(id);
 	}
-	
 
 	@Override
 	public void update(Producto producto) {
@@ -36,7 +38,7 @@ public class ProductoServiceImpl implements ProductoService{
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		// deleteById = eliminar por Id
 		productoRepository.deleteById(id);
 	}
 

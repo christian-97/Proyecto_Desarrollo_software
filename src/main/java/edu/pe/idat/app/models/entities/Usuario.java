@@ -20,7 +20,7 @@ public class Usuario {
 	private String email;
 	private String direccion;
 	private String telefono;
-	private String tipo;
+	private String tipo;//cliente o perosnal
 	private String password;
 	
 	@OneToMany(mappedBy = "usuario")

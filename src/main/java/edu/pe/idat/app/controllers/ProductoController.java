@@ -1,16 +1,20 @@
 package edu.pe.idat.app.controllers;
 
+import java.util.Optional;
+
 import org.slf4j.*; //importa todo lo que tiene el paquete de Logger
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.pe.idat.app.models.entities.Producto;
 import edu.pe.idat.app.models.entities.Usuario;
 import edu.pe.idat.app.services.ProductoService;
+
 
 @Controller
 @RequestMapping("/productos")
@@ -37,6 +41,23 @@ public class ProductoController {
 		producto.setUsuario(u);						//se añade el usuario a producto 
 		
 		productoService.save(producto);
+		return "redirect:/productos";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable Integer id,Model model) {
+		
+		Producto producto = new Producto();
+		Optional<Producto> optionalProducto=productoService.get(id);
+ 		producto=optionalProducto.get();
+ 		LOGGER.info("busacado : {}",producto);
+		model.addAttribute("producto",producto);
+ 		return "productos/edit";
+	}
+	
+	@PostMapping("/update")
+	public String update(Producto producto) {
+		productoService.update(producto);
 		return "redirect:/productos";
 	}
 }

@@ -19,7 +19,7 @@ public class Producto {
 	private double precio;
 	private int cantidad;
 	
-	@ManyToOne
+	@ManyToOne 
 	private Usuario usuario;
 	
 	public Producto() {

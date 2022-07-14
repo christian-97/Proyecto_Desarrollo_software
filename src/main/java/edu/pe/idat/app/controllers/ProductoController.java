@@ -19,79 +19,109 @@ import edu.pe.idat.app.models.entities.Usuario;
 import edu.pe.idat.app.services.ProductoService;
 import edu.pe.idat.app.services.UploadFileService;
 
-
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
-	
-	private final Logger LOGGER = LoggerFactory.getLogger(ProductoController.class); //variable tipo logger q va haciendo un Log(registro) de lo que se ejecuta dentro del programa
-				//variable LOGGER	//clase LoggerFactory//getLogger es una método q recibe un parámetro(en este caso el nombre de la clase)
-	@Autowired //crea objetos el mismo spring
-	private ProductoService productoService; //objeto productoService
-	
+
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductoController.class); // variable tipo logger q va
+																						// haciendo un Log(registro) de
+																						// lo que se ejecuta dentro del
+																						// programa
+	// variable LOGGER //clase LoggerFactory//getLogger es una método q recibe un
+	// parámetro(en este caso el nombre de la clase)
+	@Autowired // crea objetos el mismo spring
+	private ProductoService productoService; // objeto productoService
+
 	@Autowired
 	private UploadFileService upload;
-	
+
 	@GetMapping("")
-	public String show(Model model) { //parámetro de tipo model,lleva información desde backend hacia la vista Show
-		model.addAttribute("productos", productoService.findAll()); // se usa el objeto model, y se invoca addAtribute con 2 parámetros, objeto productoService en donde están todos los métodos.
+	public String show(Model model) { // parámetro de tipo model,lleva información desde backend hacia la vista Show
+		model.addAttribute("productos", productoService.findAll()); // se usa el objeto model, y se invoca addAtribute
+																	// con 2 parámetros, objeto productoService en donde
+																	// están todos los métodos.
 		return "productos/show";
 	}
-	@GetMapping("/create")		//comentarios de Argumedo
+
+	@GetMapping("/create") // comentarios de Argumedo
 	public String create() {
 		return "productos/create";
 	}
-	
-	@PostMapping("/save")						 // responde a una peticion tipo postmapping, mapeado con /save
-	public String save(Producto producto,@RequestParam("img") MultipartFile file ) throws IOException {			//importamos producto y --> //recibe parámetro en el objeto producto
+
+	@PostMapping("/save") // responde a una peticion tipo postmapping, mapeado con /save
+	public String save(Producto producto, @RequestParam("img") MultipartFile file) throws IOException { // importamos
+																										// producto y
+																										// --> //recibe
+																										// parámetro en
+																										// el objeto
+																										// producto
 		LOGGER.info("Este es el objeto producto {}", producto);
-		Usuario u = new Usuario(1,"","","","","","",""); //crear usuario en la base de datos
-		producto.setUsuario(u);						//se añade el usuario a producto 
-		
-		//imagen
-		if(producto.getId()==null) {
-			String nombreImagen=upload.saveImage(file);
+		Usuario u = new Usuario(1, "", "", "", "", "", "", ""); // crear usuario en la base de datos
+		producto.setUsuario(u); // se añade el usuario a producto
+
+		// guardar una imagen
+		if (producto.getId() == null) {
+			String nombreImagen = upload.saveImage(file);
 			producto.setImagen(nombreImagen);
-			
+
 		}
-		
+
 		else {
-			//al editar el producto sin affectar la imagen 
-			//de no ser deseado
-			if(file.isEmpty()) {
-				Producto p=new Producto();
-				p=productoService.get(producto.getId()).get();
-				producto.setImagen(p.getImagen());
-			}
-			else {
-				String nombreImagen=upload.saveImage(file);
-				producto.setImagen(nombreImagen);
-			}
+
 		}
-		
+
 		productoService.save(producto);
 		return "redirect:/productos";
 	}
-	
+
 	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable Integer id,Model model) {
-		
+	public String edit(@PathVariable Integer id, Model model) {
+
 		Producto producto = new Producto();
-		Optional<Producto> optionalProducto=productoService.get(id);
- 		producto=optionalProducto.get();
- 		LOGGER.info("busacado : {}",producto);
-		model.addAttribute("producto",producto);
- 		return "productos/edit";
+		Optional<Producto> optionalProducto = productoService.get(id);
+		producto = optionalProducto.get();
+		LOGGER.info("busacado : {}", producto);
+		model.addAttribute("producto", producto);
+		return "productos/edit";
 	}
-	
+
 	@PostMapping("/update")
-	public String update(Producto producto) {
+	public String update(Producto producto, @RequestParam("img") MultipartFile file) throws IOException {
+		Producto p = new Producto();
+		p = productoService.get(producto.getId()).get();
+		
+		// al editar el producto sin affectar la imagen
+		// de no ser deseado
+		if (file.isEmpty()) {
+			
+			producto.setImagen(p.getImagen());
+		}
+		// de lo contrario si se cambia la imagen
+		// tambien cuando es editada
+		else {
+			// elimina la imagen por defecto si ya a sido asignada
+			if (p.getImagen().equals("default.jpg")) {
+				upload.deleteImage(p.getImagen());
+			}
+
+			String nombreImagen = upload.saveImage(file);
+			producto.setImagen(nombreImagen);
+		}
+		producto.setUsuario(p.getUsuario());
 		productoService.update(producto);
 		return "redirect:/productos";
 	}
-	
+
 	@GetMapping("/delete/{id}")
-	public String delete (@PathVariable Integer id) {
+	public String delete(@PathVariable Integer id) {
+		Producto p = new Producto();
+		p = productoService.get(id).get();
+
+		// elimina la imagen por defecto si ya a sido asignada
+		if (p.getImagen().equals("default.jpg")) {
+			upload.deleteImage(p.getImagen());
+		}
+
 		productoService.delete(id);
 		return "redirect:/productos";
 	}

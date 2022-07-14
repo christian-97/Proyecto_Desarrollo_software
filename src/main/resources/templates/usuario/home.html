@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<head>
 
+<head>
 <link rel="icon"
 	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62cfbf5d9f8d013a17e48c17/previews/62cfbf5e9f8d013a17e48c98/download/image.png">
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Menu Administrativo</title>
+<title>Menu de Usuario</title>
 
 
 <!-- Bootstrap core CSS -->
-<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/heroic-features.css" rel="stylesheet">
+<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
 
 </head>
 
 <body>
 
-	<div th:include="administrador/template_admin.html::header"></div>
+	<!-- Navigation -->
+	<div th:include="usuario/template_usuario.html::header"></div>
 
 	<!-- Page Content -->
 	<div class="container">
 
 		<!-- Jumbotron Header -->
-		<header class="jumbotron my-4" style="background:url('https://trello.com/1/cards/6291995e5f22825366332f10/attachments/629c2c1503da93740b4c49b2/previews/629c2c1603da93740b4c49cf/download/vghfhg.jpg')
-		no-repeat;width:auto;height:300px ;background-size:cover;">
-				
 
-			<h1 class="display-3">Titulo de administrador</h1>
-			<!-- cambio de fecha a 2022 -->
+		<header class="jumbotron my-4"
+			style="background: url('https://trello.com/1/cards/6291995e5f22825366332f10/attachments/629c2c1503da93740b4c49b2/previews/629c2c1603da93740b4c49cf/download/vghfhg.jpg') no-repeat;
+			 width: auto;height: 300px; background-size: cover;">
+			<h1 class="display-3">Titulo de Usuario</h1>
 			<p class="lead">Tu tienda de productos en Línea</p>
-
 		</header>
 
 		<!-- Page Features -->
@@ -52,12 +52,11 @@
 						<p class="card-text" th:text="${producto.nombre}"></p>
 					</div>
 					<div class="card-footer">
-						<a href="productohome.html" class="btn btn-success">Ver
-							producto</a>
+						<a th:href="@{/productohome/{id} (id=${producto.id})}"
+							class="btn btn-success">Ver producto</a>
 					</div>
 				</div>
 			</div>
-
 
 		</div>
 		<!-- /.row -->
@@ -66,12 +65,10 @@
 	<!-- /.container -->
 
 	<!-- Footer -->
-	<div th:include="administrador/template_admin.html::footer"></div>
-	<!-- /.container -->
-
+	<div th:include="usuario/template_usuario.html::footer"></div>
 	<!-- Bootstrap core JavaScript -->
-	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 

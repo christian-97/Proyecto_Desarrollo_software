@@ -1,4 +1,4 @@
-package edu.pe.idat.app.services;
+package edu.pe.idat.app.models.services;
 
 import java.util.List;
 import java.util.Optional;

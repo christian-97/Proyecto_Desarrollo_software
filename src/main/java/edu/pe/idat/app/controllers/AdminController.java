@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.pe.idat.app.models.entities.Producto;
-import edu.pe.idat.app.services.ProductoService;
+import edu.pe.idat.app.models.services.ProductoService;
 
 @Controller
 @RequestMapping("/administrador")

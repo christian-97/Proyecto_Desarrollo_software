@@ -1,6 +1,7 @@
 package edu.pe.idat.app.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.pe.idat.app.models.entities.Usuario;
-
+import edu.pe.idat.app.models.services.IDetalleOrdenService;
+import edu.pe.idat.app.models.services.IOrdenService;
+import edu.pe.idat.app.models.services.IUsuarioService;
+import edu.pe.idat.app.models.services.ProductoService;
 import edu.pe.idat.app.models.entities.DetalleOrden;
 import edu.pe.idat.app.models.entities.Orden;
 import edu.pe.idat.app.models.entities.Producto;
-import edu.pe.idat.app.services.IUsuarioService;
-import edu.pe.idat.app.services.ProductoService;
 
 @Controller
 @RequestMapping("/")
@@ -36,6 +38,12 @@ public class HomeController {
 	
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	@Autowired
+	private IOrdenService ordenService;
+	
+	@Autowired
+	private IDetalleOrdenService detalleOrdenService;
 	
 	//para almacenar detalles de la orden
 	List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
@@ -136,6 +144,35 @@ public class HomeController {
 		model.addAttribute("usuario", usuario);
 		
 		return "usuario/resumenorden";
+	}
+	
+	
+	//guardar orden
+	@GetMapping("/saveOrder")
+	public String saveOrder() {
+		
+		Date fechaCreacion = new Date();
+		orden.setFechaRecibida(fechaCreacion);
+		orden.setNumero(ordenService.generarNumeroOrden());
+		
+		//user
+		Usuario usuario = usuarioService.findById(1).get();
+		
+		orden.setUsuario(usuario);
+		ordenService.save(orden);
+		
+		//detalles
+		for (DetalleOrden dt:detalles) {
+			dt.setOrden(orden);
+			detalleOrdenService.save(dt);
+		}
+		
+		//limpiarorden 
+		
+		orden = new Orden();
+		detalles.clear();
+		 
+		return "";
 	}
 
 }

@@ -16,8 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.pe.idat.app.models.entities.Producto;
 import edu.pe.idat.app.models.entities.Usuario;
-import edu.pe.idat.app.services.ProductoService;
-import edu.pe.idat.app.services.UploadFileService;
+import edu.pe.idat.app.models.services.ProductoService;
+import edu.pe.idat.app.models.services.UploadFileService;
 
 @Controller
 @RequestMapping("/productos")

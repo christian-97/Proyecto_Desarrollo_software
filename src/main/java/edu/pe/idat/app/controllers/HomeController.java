@@ -161,7 +161,7 @@ public class HomeController {
 		orden.setUsuario(usuario);
 		ordenService.save(orden);
 		
-		//detalles
+		//detalles saves
 		for (DetalleOrden dt:detalles) {
 			dt.setOrden(orden);
 			detalleOrdenService.save(dt);

@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.pe.idat.app.models.DAO.IOrdenDao;
 import edu.pe.idat.app.models.entities.Orden;
 
+@Service
 public class OrdenServiceImpl implements IOrdenService {
 
 	@Autowired
@@ -61,5 +63,6 @@ public class OrdenServiceImpl implements IOrdenService {
 
 		return numeroConcatenado;
 	}
+	
 
 }

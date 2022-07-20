@@ -19,5 +19,17 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		// TODO Auto-generated method stub
 		return usuarioDao.findById(id);
 	}
+
+	@Override
+	public Usuario save(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return usuarioDao.save(usuario);
+	}
+
+	@Override
+	public Optional<Usuario> findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return usuarioDao.findByEmail(email);
+	}
 	
 }

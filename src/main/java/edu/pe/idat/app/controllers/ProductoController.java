@@ -3,6 +3,8 @@ package edu.pe.idat.app.controllers;
 import java.io.IOException;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.*; //importa todo lo que tiene el paquete de Logger
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.pe.idat.app.models.entities.Producto;
 import edu.pe.idat.app.models.entities.Usuario;
+import edu.pe.idat.app.models.services.IUsuarioService;
 import edu.pe.idat.app.models.services.ProductoService;
 import edu.pe.idat.app.models.services.UploadFileService;
 
@@ -31,6 +34,9 @@ public class ProductoController {
 	// parámetro(en este caso el nombre de la clase)
 	@Autowired // crea objetos el mismo spring
 	private ProductoService productoService; // objeto productoService
+	
+	@Autowired
+	private IUsuarioService usuarioService;
 
 	@Autowired
 	private UploadFileService upload;
@@ -49,14 +55,14 @@ public class ProductoController {
 	}
 
 	@PostMapping("/save") // responde a una peticion tipo postmapping, mapeado con /save
-	public String save(Producto producto, @RequestParam("img") MultipartFile file) throws IOException { // importamos
+	public String save(Producto producto, @RequestParam("img") MultipartFile file,HttpSession session) throws IOException { // importamos
 																										// producto y
 																										// --> //recibe
 																										// parámetro en
 																										// el objeto
 																										// producto
 		LOGGER.info("Este es el objeto producto {}", producto);
-		Usuario u = new Usuario(1, "", "", "", "", "", "", ""); // crear usuario en la base de datos
+		Usuario u = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get(); // crear usuario en la base de datos
 		producto.setUsuario(u); // se añade el usuario a producto
 
 		// guardar una imagen

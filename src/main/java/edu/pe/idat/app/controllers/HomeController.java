@@ -159,6 +159,7 @@ public class HomeController {
 	public String saveOrder(HttpSession session) {
 		
 		Date fechaCreacion = new Date();
+		orden.setFechaCreacion(fechaCreacion);
 		orden.setFechaRecibida(fechaCreacion);
 		orden.setNumero(ordenService.generarNumeroOrden());
 		

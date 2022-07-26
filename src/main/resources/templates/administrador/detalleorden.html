@@ -2,13 +2,15 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
+	<link rel="icon"
+	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62df764a22b4c4132c8c511e/previews/62df764b22b4c4132c8c5139/download/Mi_proyecto.png">
+	
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Spring eCommerce</title>
+  <title>Detalle Orden</title>
 
 
   <!-- Bootstrap core CSS -->
@@ -31,12 +33,12 @@
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Detalles</small>
+        Kirei  <small>Detalles</small>
       </h1>
 
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item"><a href="compras.html">Compras</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/administrador/ordenes}">Ordenes</a></li>
         <li class="breadcrumb-item active">Detalle de Compra</li>
       </ol>
 

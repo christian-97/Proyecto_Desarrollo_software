@@ -2,16 +2,19 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<link rel="icon"
+	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62df764a22b4c4132c8c511e/previews/62df764b22b4c4132c8c5139/download/Mi_proyecto.png">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-  <title>Spring eCommerce</title>
+<title>Lista de Usuarios</title>
 
 
-  <!-- Bootstrap core CSS -->
+<!-- Bootstrap core CSS -->
 <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
 	rel="stylesheet">
 
@@ -22,45 +25,45 @@
 
 <body>
 
-  <!-- Navigation -->
-  <div th:include="administrador/template_admin.html::header"></div>
+	<!-- Navigation -->
+	<div th:include="administrador/template_admin.html::header"></div>
 
-<!-- Page Content -->
-<div class="container">
+	<!-- Page Content -->
+	<div class="container">
 
 
-  <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">
-    eCommerce <small>Usuarios</small>
-  </h1>
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">
+			Lista de Usuario <small>Usuarios</small>
+		</h1>
 
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-    <li class="breadcrumb-item active">Ver Usuarios</li>
-  </ol>
-  <h2>Usuarios</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Email</th>
-        <th scope="col">Dirección</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="usuario:${usuarios}">
-        <td th:text="${usuario.nombre}"></td>
-        <td th:text="${usuario.email}"></td>
-        <td th:text="${usuario.direccion}"></td>
-      </tr>       
-    </tbody>
-  </table>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+			<li class="breadcrumb-item active">Ver Usuarios</li>
+		</ol>
+		<h2>Usuarios</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Email</th>
+					<th scope="col">Dirección</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usuario:${usuarios}">
+					<td th:text="${usuario.nombre}"></td>
+					<td th:text="${usuario.email}"></td>
+					<td th:text="${usuario.direccion}"></td>
+				</tr>
+			</tbody>
+		</table>
 
-</div>
-<!-- /.container -->
+	</div>
+	<!-- /.container -->
 
-<!-- Footer -->
-<div th:include="administrador/template_admin.html::footer"></div>
+	<!-- Footer -->
+	<div th:include="administrador/template_admin.html::footer"></div>
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>

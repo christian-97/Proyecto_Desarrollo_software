@@ -64,17 +64,19 @@ public class HomeController {
 	}
 	
 	@GetMapping("productohome/{id}")
-	public String productoHome(@PathVariable Integer id,Model model) {
+	public String productoHome(@PathVariable Integer id,Model model,HttpSession session) {
 		log.info("id producto enviado como parametro {}",id);
 		Producto producto =new Producto();
 		Optional<Producto> productoOptional = productoService.get(id);
 		producto = productoOptional.get();
 		model.addAttribute("producto",producto);
+		model.addAttribute("sesion",session.getAttribute("idusuario"));
 		return "usuario/productohome";
 	}
 	
 	@PostMapping("/cart")
-	public String addCart(@RequestParam Integer id,@RequestParam Integer cantidad,Model model) {
+	public String addCart(@RequestParam Integer id,@RequestParam Integer cantidad,Model model,HttpSession session) {
+		model.addAttribute("sesion",session.getAttribute("idusuario"));
 		DetalleOrden detalleOrden = new DetalleOrden();
 		Producto producto = new Producto();
 		double sumaTotal=0;
@@ -149,7 +151,7 @@ public class HomeController {
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
 		model.addAttribute("usuario", usuario);
-		
+		model.addAttribute("sesion",session.getAttribute("idusuario"));
 		return "usuario/resumenorden";
 	}
 	

@@ -3,7 +3,7 @@
 
 <head>
 <link rel="icon"
-	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62cfbf5d9f8d013a17e48c17/previews/62cfbf5e9f8d013a17e48c98/download/image.png">
+	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62df764a22b4c4132c8c511e/previews/62df764b22b4c4132c8c5139/download/Mi_proyecto.png">
 
 <meta charset="utf-8">
 <meta name="viewport"
@@ -11,9 +11,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Spring eCommerce</title>
+<title>Menu Productos</title>
 <!-- Bootstrap core CSS -->
-<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link th:href="@{css/heroic-features.css}" rel="stylesheet">
@@ -21,7 +22,7 @@
 </head>
 
 <body>
-	
+
 	<!-- Navegation -->
 	<div th:include="administrador/template_admin.html::header"></div>
 
@@ -30,16 +31,18 @@
 
 
 		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">
-			Listado de Productos <small>Productos</small>
+		<h1 class="mt-4 mb-3 font-italic">
+			Kirei <small>Productos</small>
 		</h1>
 
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item text-danger"><a href="index.html">Home</a></li>
+			<li class="breadcrumb-item text-danger"><a
+				th:href="@{/administrador}">Home</a></li>
 			<li class="breadcrumb-item active">Ver Productos</li>
 		</ol>
 
-		<a class="btn btn-danger" th:href="@{/productos/create}"> Crear Producto</a>
+		<a class="btn btn-danger" th:href="@{/productos/create}"> Crear
+			Producto</a>
 		<h2>Productos</h2>
 		<table class="table">
 			<thead>
@@ -52,14 +55,32 @@
 					<th scope="col">Acción</th>
 				</tr>
 			</thead>
-			<tbody>	<!-- each nos permite recorrer una lista -->
-				<tr th:each ="producto:${productos}"> <!-- llama a la variable productos y lo pone en mi varible producto -->
-					<td th:text="${producto.nombre}"></td>  <!-- producto recoge cada iteracion de la lista -->
+			<tbody>
+				<!-- each nos permite recorrer una lista -->
+				<tr th:each="producto:${productos}">
+					<!-- llama a la variable productos y lo pone en mi varible producto -->
+					<td th:text="${producto.nombre}"></td>
+					<!-- producto recoge cada iteracion de la lista -->
 					<td th:text="${producto.descripcion}"></td>
 					<td th:text="${producto.cantidad}"></td>
 					<td th:text="${producto.precio}"></td>
-					<td><a class="btn btn-warning" th:href="@{productos/edit/{id} (id=${producto.id}) }">Editar</a></td>
-					<td><a class="btn btn-danger" th:href="@{productos/delete/{id} (id=${producto.id}) }">Eliminar</a></td>
+					<td><a class="btn btn-warning"
+						th:href="@{productos/edit/{id} (id=${producto.id}) }"><svg
+								xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-pencil-square"
+								viewBox="0 0 16 16"> <path
+									d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+  								<path fill-rule="evenodd"
+									d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+								</svg>Editar</a></td>
+					<td><a class="btn btn-danger"
+						th:href="@{productos/delete/{id} (id=${producto.id}) }"><svg
+								xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-trash3-fill"
+								viewBox="0 0 16 16">
+  <path
+									d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+</svg>Eliminar</a></td>
 				</tr>
 			</tbody>
 		</table>

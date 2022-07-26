@@ -4,7 +4,7 @@
 
 <head>
 <link rel="icon"
-	href="https://trello.com/1/cards/6291995e5f22825366332f10/attachments/629c2c1503da93740b4c49b2/previews/629c2c1603da93740b4c49cf/download/vghfhg.jpg">
+	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62df764a22b4c4132c8c511e/previews/62df764b22b4c4132c8c5139/download/Mi_proyecto.png">
 
 <meta charset="utf-8">
 <meta name="viewport"
@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Spring eCommerce</title>
+<title>Carrito de compras</title>
 
 
 <!-- Bootstrap core CSS -->
@@ -38,7 +38,7 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			Carrito <small>Carrito</small>
+			Kirei <small>Carrito de compras</small>
 		</h1>
 
 		<ol class="breadcrumb">
@@ -85,7 +85,10 @@
 						<ul class="list-group">
 							<li class="list-group-item"><h5 th:text="${orden.total}">Total:
 									$ 10</h5></li>
-							<a th:href="@{/order}" class="btn btn-danger">Ver Orden</a>
+							<a th:href="@{/order}" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+</svg> Ver Orden</a>
 						</ul>
 					</div>
 

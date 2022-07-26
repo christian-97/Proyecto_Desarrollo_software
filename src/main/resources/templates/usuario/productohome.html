@@ -25,7 +25,12 @@
 <body>
 
 	<!-- Navigation -->
-	<div th:include="usuario/template_usuario.html::header"></div>
+	
+	<div th:include="usuario/template_usuario.html::header"
+		th:if="${sesion==null}"></div>
+
+	<div th:include="usuario/template_usuario.html::header-user"
+		th:unless="${sesion==null}"></div>
 
 	<!-- Page Content -->
 	<div class="container">
@@ -33,7 +38,7 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			Template Usuario <small>Producto</small>
+			Detalle <small>Producto</small>
 		</h1>
 
 		<ol class="breadcrumb">
@@ -52,7 +57,7 @@
 					</div>
 					<div class="col-lg-6">
 						<form th:action="@{/cart}" method="POST">
-						<input type="hidden" th:value=${producto.id} name="id">
+							<input type="hidden" th:value=${producto.id} name="id">
 							<h2 class="card-title" th:text="${producto.nombre}"></h2>
 
 							<ul class="list-group">
@@ -68,8 +73,9 @@
 							</ul>
 
 
-							<button type="submit" class="btn btn-danger">Añadir al
-								carrito</button>
+							<button type="submit" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+</svg> Añadir al	carrito</button>
 
 						</form>
 					</div>

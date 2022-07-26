@@ -4,7 +4,7 @@
 <head>
 
 <link rel="icon"
-	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62cfbf5d9f8d013a17e48c17/previews/62cfbf5e9f8d013a17e48c98/download/image.png">
+	href="https://trello.com/1/cards/62cfbf5d9f8d013a17e48bd7/attachments/62df764a22b4c4132c8c511e/previews/62df764b22b4c4132c8c5139/download/Mi_proyecto.png">
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,9 +35,9 @@
 		no-repeat;width:auto;height:300px ;background-size:cover;">
 				
 
-			<h1 class="display-3">Titulo de administrador</h1>
+			<h1 class="display-3 font-italic">Kirei</h1>
 			<!-- cambio de fecha a 2022 -->
-			<p class="lead">Tu tienda de productos en Línea</p>
+			<p class="lead font-italic">Tu tienda de productos en Línea</p>
 
 		</header>
 
@@ -52,7 +52,7 @@
 						<p class="card-text" th:text="${producto.nombre}"></p>
 					</div>
 					<div class="card-footer">
-						<a href="productohome.html" class="btn btn-success">Ver
+						<a th:href="@{productos/edit/{id} (id=${producto.id}) }" class="btn btn-success">Ver
 							producto</a>
 					</div>
 				</div>

@@ -2,6 +2,8 @@ package edu.pe.idat.app.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.pe.idat.app.models.entities.Orden;
 import edu.pe.idat.app.models.entities.Producto;
+import edu.pe.idat.app.models.services.IOrdenService;
 import edu.pe.idat.app.models.services.IUsuarioService;
 import edu.pe.idat.app.models.services.ProductoService;
 
@@ -23,6 +26,11 @@ public class AdminController {
 	
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	@Autowired
+	private IOrdenService ordenService;
+	
+	private Logger logg = LoggerFactory.getLogger(AdminController.class);
 	
 	@GetMapping("")
 	public String home(Model model) { //cambié el home() a show()
@@ -39,16 +47,16 @@ public class AdminController {
 	
 	@GetMapping("/ordenes")
 	public String ordenes(Model model) {
-		//model.addAttribute("ordenes", ordensService.findAll());
+		model.addAttribute("ordenes", ordenService.findAll());
 		return "administrador/ordenes";
 	}
 	
 	@GetMapping("/detalle/{id}")
 	public String detalle(Model model, @PathVariable Integer id) {
-		//logg.info("Id de la orden {}",id);
-		//Orden orden= ordensService.findById(id).get();
+		logg.info("Id de la orden {}",id);
+		Orden orden= ordenService.findById(id).get();
 		
-		//model.addAttribute("detalles", orden.getDetalle());
+		model.addAttribute("detalles", orden.getDetalle());
 		
 		return "administrador/detalleorden";
 	}
